@@ -6,7 +6,7 @@
 
 ### Handles a lot of the more complex access issues that aren't talked about much
 
-A comprehensive accessibility skill for coding agents -- covers motor, cognitive, visual, and communication disabilities with WCAG 2.2 AA compliance guidance, production CSS utilities, copy-paste JavaScript patterns, and 10 standalone audit scripts. Works with Claude Code, Manus, Cursor, Codex, and any agent that reads markdown instructions.
+An accessibility skill for coding agents -- covers motor, cognitive, visual, and communication disabilities with WCAG 2.2 AA compliance guidance, production CSS utilities, copy-paste JavaScript patterns, and 10 standalone audit scripts. Works with Claude Code, Manus, Cursor, Codex, and any agent that reads markdown instructions.
 
 This is not a checklist of contrast ratios. It covers switch access, eye gaze, keyboard-only navigation, fatigue detection, dyslexia-friendly typography, neurodivergent alt text, forced colors mode, and more. The motor accessibility section comes from years of building assistive technology products — eye gaze access, BCI, physical switch access, and more. 
 
@@ -42,7 +42,7 @@ scripts/                          # 10 Python scripts — stdlib only, no pip in
 git clone https://github.com/lukeslp/accessibility-skill.git .claude/skills/accessibility
 ```
 
-Claude Code reads `SKILL.md` from `.claude/skills/*/`. This skill is also submitted to the [anthropics/skills](https://github.com/anthropics/skills) community repo.
+Claude Code reads `SKILL.md` from `.claude/skills/*/`.
 
 ### Codex / Manus
 
