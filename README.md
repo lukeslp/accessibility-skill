@@ -1,5 +1,9 @@
 # accessibility-skill
 
+[![MIT License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+[![WCAG 2.2 AA](https://img.shields.io/badge/WCAG-2.2_AA-blue.svg)](https://www.w3.org/TR/WCAG22/)
+[![Works with](https://img.shields.io/badge/works_with-Claude_·_Codex_·_Cursor_·_Manus-blue.svg)](#use-with-coding-agents)
+
 A comprehensive accessibility skill for coding agents — covers motor, cognitive, visual, and communication disabilities with WCAG 2.2 AA compliance guidance, production CSS utilities, copy-paste JavaScript patterns, and 10 standalone audit scripts.
 
 This is not a checklist of contrast ratios. It covers switch access, eye gaze, keyboard-only navigation, fatigue detection, dyslexia-friendly typography, neurodivergent alt text, forced colors mode, and more. The motor accessibility section comes from years of building assistive technology products — eye gaze systems, communication boards, brain-computer interfaces — for people where every interaction with a computer costs time and effort.
