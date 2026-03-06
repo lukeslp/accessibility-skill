@@ -1,3 +1,4 @@
+# Agent cruft
 CLAUDE.md
 CRITIC.md
 ONBOARD.md
@@ -5,5 +6,14 @@ SUGGESTIONS.md
 REPO_AUDIT.md
 *_STATUS.md
 .aider.*
+
+# Dev environment config
+.cursorrules
+.cursor/
+.claude/
+.codex/
+.gemini/
+
+# Python
 __pycache__/
 *.pyc

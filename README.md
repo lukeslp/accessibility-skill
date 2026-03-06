@@ -6,7 +6,7 @@
 
 ### Handles a lot of the more complex access issues that aren't talked about much
 
-A comprehensive accessibility skill for coding agents — covers motor, cognitive, visual, and communication disabilities with WCAG 2.2 AA compliance guidance, production CSS utilities, copy-paste JavaScript patterns, and 10 standalone audit scripts. Supports Claude Code, Manus, Cursor, Codex, and others.
+A comprehensive accessibility skill for coding agents -- covers motor, cognitive, visual, and communication disabilities with WCAG 2.2 AA compliance guidance, production CSS utilities, copy-paste JavaScript patterns, and 10 standalone audit scripts. Works with Claude Code, Manus, Cursor, Codex, and any agent that reads markdown instructions.
 
 This is not a checklist of contrast ratios. It covers switch access, eye gaze, keyboard-only navigation, fatigue detection, dyslexia-friendly typography, neurodivergent alt text, forced colors mode, and more. The motor accessibility section comes from years of building assistive technology products — eye gaze access, BCI, physical switch access, and more. 
 
@@ -34,46 +34,31 @@ scripts/                          # 10 Python scripts — stdlib only, no pip in
 
 ## Use with coding agents
 
+`SKILL.md` is the core file -- it's self-contained and works with any agent that reads markdown instructions. Clone the repo or copy the files into your project however your platform expects them.
+
 ### Claude Code
 
-This skill is submitted to the [anthropics/skills](https://github.com/anthropics/skills) community repo. To use it directly in a project:
-
 ```bash
-# Clone into your project's skills directory
 git clone https://github.com/lukeslp/accessibility-skill.git .claude/skills/accessibility
 ```
 
-Or copy the files manually — Claude Code reads `SKILL.md` from `.claude/skills/*/`.
+Claude Code reads `SKILL.md` from `.claude/skills/*/`. This skill is also submitted to the [anthropics/skills](https://github.com/anthropics/skills) community repo.
 
-### OpenAI Codex CLI
+### Codex / Manus
 
-Codex reads `AGENTS.md` at the repo root. Clone this repo into your project or copy the files:
+Clone into your project root or `.agents/` directory. Both read markdown files automatically.
 
 ```bash
-# Option 1: Copy AGENTS.md to your project root (lightweight — just the rules)
-cp AGENTS.md your-project/AGENTS.md
-
-# Option 2: Copy everything (full skill + scripts + reference files)
 cp -r . your-project/.agents/accessibility/
 ```
 
-`AGENTS.md` summarizes the key rules and points Codex at `SKILL.md` and the reference files for deeper guidance.
+### Cursor / Windsurf
 
-### Manus
-
-Manus also reads `AGENTS.md`. Same setup as Codex — drop the files into your project.
-
-### Cursor
-
-A `.cursorrules` file is included. Copy it to your project root:
+Copy `SKILL.md` to your project root as `.cursorrules` or point your custom instructions at it.
 
 ```bash
-cp .cursorrules your-project/.cursorrules
+cp SKILL.md your-project/.cursorrules
 ```
-
-### Other agents
-
-Most coding agents that read markdown instructions can use `SKILL.md` directly. It's self-contained — point your agent's custom instructions at it.
 
 ## Audit scripts
 
