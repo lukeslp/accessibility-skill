@@ -10,8 +10,7 @@ A comprehensive accessibility skill for coding agents — covers motor, cognitiv
 
 This is not a checklist of contrast ratios. It covers switch access, eye gaze, keyboard-only navigation, fatigue detection, dyslexia-friendly typography, neurodivergent alt text, forced colors mode, and more. The motor accessibility section comes from years of building assistive technology products — eye gaze access, BCI, physical switch access, and more. 
 
-## You do NOT want accessibility technical debt
-### Do it now, do it well. It's the right thing to do anyway
+### You do NOT want accessibility technical debt. TRUST ME. Plus, it's the right thing to do!
 
 ## What's in here
 
