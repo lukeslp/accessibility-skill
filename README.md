@@ -2,7 +2,7 @@
 
 [![MIT License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![WCAG 2.2 AA](https://img.shields.io/badge/WCAG-2.2_AA-blue.svg)](https://www.w3.org/TR/WCAG22/)
-[![Works with](https://img.shields.io/badge/works_with-Claude_·_Codex_·_Cursor_·_Manus-blue.svg)](#use-with-coding-agents)
+[![Works with](https://img.shields.io/badge/works_with-Claude_·_Codex_·_Cursor-blue.svg)](#use-with-coding-agents)
 
 ### Handles a lot of the more complex access issues that aren't talked about much
 
@@ -44,9 +44,9 @@ git clone https://github.com/lukeslp/accessibility-skill.git .claude/skills/acce
 
 Claude Code reads `SKILL.md` from `.claude/skills/*/`.
 
-### Codex / Manus
+### Codex / other agents
 
-Clone into your project root or `.agents/` directory. Both read markdown files automatically.
+Clone into your project root or `.agents/` directory. Most agents read markdown files automatically.
 
 ```bash
 cp -r . your-project/.agents/accessibility/
