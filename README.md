@@ -4,11 +4,11 @@
 [![WCAG 2.2 AA](https://img.shields.io/badge/WCAG-2.2_AA-blue.svg)](https://www.w3.org/TR/WCAG22/)
 [![Works with](https://img.shields.io/badge/works_with-Claude_·_Codex_·_Cursor-blue.svg)](#use-with-coding-agents)
 
-### Handles a lot of the more complex access issues that aren't talked about much
+### Helps address complex computer access issues and the multiply disabled
 
-An accessibility skill for coding agents -- covers motor, cognitive, visual, and communication disabilities with WCAG 2.2 AA compliance guidance, production CSS utilities, copy-paste JavaScript patterns, and 10 standalone audit scripts. Works with Claude Code, Manus, Cursor, Codex, and any agent that reads markdown instructions.
+An accessibility skill for coding agents that covers motor, cognitive, visual, and communication disabilities with WCAG 2.2 AA compliance guidance, production CSS utilities, copy-paste JavaScript patterns, and 10 standalone audit scripts. Works with Claude Code, Manus, Cursor, Codex, and anything else thank can take a markdown prompt with python stapled to it.
 
-This is not a checklist of contrast ratios. It covers switch access, eye gaze, keyboard-only navigation, fatigue detection, dyslexia-friendly typography, neurodivergent alt text, forced colors mode, and more. The motor accessibility section comes from years of building assistive technology products — eye gaze access, BCI, physical switch access, and more. 
+This is not a checklist. It covers switch access, eye gaze, keyboard-only navigation, fatigue detection, dyslexia-friendly typography, neurodivergent alt text, forced colors mode, and more. The motor accessibility section comes from years of building assistive technology products — eye gaze access, BCI, physical switch access, and more. 
 
 ### You do NOT want accessibility technical debt. TRUST ME. Plus, it's the right thing to do!
 
@@ -34,7 +34,7 @@ scripts/                          # 10 Python scripts — stdlib only, no pip in
 
 ## Use with coding agents
 
-`SKILL.md` is the core file -- it's self-contained and works with any agent that reads markdown instructions. Clone the repo or copy the files into your project however your platform expects them.
+`SKILL.md` is tht he core file -- it's self-contained and works with any agent that reads markdown instructions. Clone the repo or copy the files into your project however your platform expects them.
 
 ### Claude Code
 
@@ -44,7 +44,7 @@ git clone https://github.com/lukeslp/accessibility-multiskill.git .claude/skills
 
 Claude Code reads `SKILL.md` from `.claude/skills/*/`.
 
-### Codex / other agents
+### Codex /  other agents
 
 Clone into your project root or `.agents/` directory. Most agents read markdown files automatically.
 
