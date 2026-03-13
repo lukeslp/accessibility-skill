@@ -1,20 +1,19 @@
 {
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "accessibility-skills",
+  "description": "Accessibility skills for coding agents — motor, cognitive, visual, screen reader, and testing",
   "owner": {
     "name": "Luke Steuber",
-    "url": "https://github.com/lukeslp"
-  },
-  "metadata": {
-    "description": "Accessibility skills for coding agents — motor, cognitive, visual, screen reader, and testing"
+    "email": "luke@lukesteuber.com"
   },
   "plugins": [
     {
       "name": "accessibility",
-      "source": ".",
+      "source": "./plugins/accessibility",
       "description": "WCAG 2.2 AA accessibility guidance with 5 domain skills and 10 audit scripts",
       "version": "1.0.0",
       "category": "accessibility",
-      "tags": ["wcag", "a11y", "motor", "cognitive", "visual", "screen-reader"]
+      "homepage": "https://github.com/lukeslp/accessibility-skills"
     }
   ]
 }
