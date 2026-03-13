@@ -16,15 +16,18 @@ This is not a checklist. It covers switch access, eye gaze, keyboard-only naviga
 
 ```
 .claude-plugin/
-├── plugin.json                   # Plugin manifest for Claude Code
+├── plugin.json                   # Plugin manifest
 └── marketplace.json              # Self-hosted marketplace catalog
-skills/                           # 5 domain subskills
-├── motor/                        # /accessibility:motor — switch access, eye gaze, touch targets
-├── visual/                       # /accessibility:visual — contrast, alt text, forced colors
-├── cognitive/                    # /accessibility:cognitive — plain language, reduced motion
-├── screen-reader/                # /accessibility:screen-reader — landmarks, ARIA, forms
-└── testing/                      # /accessibility:testing — full WCAG checklist + all scripts
-SKILL.md                          # Combined skill (~350 lines) — backward compatible
+plugins/accessibility/            # The plugin
+├── plugin.json
+└── skills/                       # 6 skills (1 combined + 5 domain-specific)
+    ├── accessibility/            # /accessibility — full combined skill (~350 lines)
+    ├── motor/                    # /accessibility:motor — switch access, eye gaze, touch targets
+    ├── visual/                   # /accessibility:visual — contrast, alt text, forced colors
+    ├── cognitive/                # /accessibility:cognitive — plain language, reduced motion
+    ├── screen-reader/            # /accessibility:screen-reader — landmarks, ARIA, forms
+    └── testing/                  # /accessibility:testing — full WCAG checklist + all scripts
+SKILL.md                          # Combined skill — backward compat for clone-based installs
 reference/
 ├── accessibility.css             # Full CSS (focus, SR-only, touch targets, reduced motion, forced colors)
 └── patterns.md                   # Full JS/HTML patterns (focus trap, roving tabindex, dialog, SR announcements)
@@ -51,7 +54,8 @@ scripts/                          # 10 Python scripts — stdlib only, no pip in
 /plugin install accessibility@accessibility-skills
 ```
 
-Then use individual skills:
+Then use skills:
+- `/accessibility` — Everything (motor, visual, cognitive, screen reader, testing — the full ~350 line skill)
 - `/accessibility:motor` — Switch access, eye gaze, touch targets, keyboard nav, fatigue detection
 - `/accessibility:visual` — Contrast, color independence, CVI/photophobia, alt text (4 styles), forced colors
 - `/accessibility:cognitive` — Plain language, dyslexia-friendly text, reduced motion, captions, AAC
@@ -87,7 +91,7 @@ Copy `SKILL.md` to your project root as `.cursorrules`, or use individual subski
 cp SKILL.md your-project/.cursorrules
 
 # Or pick specific domains
-cp skills/motor/SKILL.md your-project/.cursorrules
+cp plugins/accessibility/skills/motor/SKILL.md your-project/.cursorrules
 ```
 
 ## Audit scripts
