@@ -54,6 +54,13 @@ Cognitive and communication accessibility patterns for web interfaces. Covers co
 
 - `reference/cognitive.css` — Reduced motion media query, dyslexia-friendly text styles
 
+## Audit Scripts
+
+- `scripts/timing-audit.py` — Flags animations and transitions missing `prefers-reduced-motion` support
+- `scripts/link-text-audit.py` — Detects vague link text ("click here", "read more") that fails plain language standards
+- `scripts/heading-outline.py` — Validates heading hierarchy for proper content chunking
+- `scripts/focus-order-check.py` — Checks focus order and visibility for predictable keyboard navigation
+
 ## Common Issues and Fixes
 
 | Issue | Fix |

@@ -21,7 +21,7 @@ This is not a checklist. It covers switch access, eye gaze, keyboard-only naviga
 plugins/accessibility/            # The plugin
 ├── plugin.json
 └── skills/                       # 6 skills (1 combined + 5 domain-specific)
-    ├── all/                      # /accessibility:all — full combined skill (~350 lines)
+    ├── accessibility/             # Combined skill — full accessibility coverage (~350 lines)
     ├── motor/                    # /accessibility:motor — switch access, eye gaze, touch targets
     ├── visual/                   # /accessibility:visual — contrast, alt text, forced colors
     ├── cognitive/                # /accessibility:cognitive — plain language, reduced motion
@@ -55,7 +55,7 @@ scripts/                          # 10 Python scripts — stdlib only, no pip in
 ```
 
 Then use skills:
-- `/accessibility:all` — Everything (motor, visual, cognitive, screen reader, testing — the full ~350 line skill)
+- `/accessibility` — Everything (motor, visual, cognitive, screen reader, testing — the full ~350 line skill)
 - `/accessibility:motor` — Switch access, eye gaze, touch targets, keyboard nav, fatigue detection
 - `/accessibility:visual` — Contrast, color independence, CVI/photophobia, alt text (4 styles), forced colors
 - `/accessibility:cognitive` — Plain language, dyslexia-friendly text, reduced motion, captions, AAC
