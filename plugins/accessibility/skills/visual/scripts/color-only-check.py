@@ -130,6 +130,8 @@ class ColorOnlyChecker(HTMLParser):
     def _check_link_underlines(self, css):
         """Walk CSS blocks (including nested @-rules) looking for anchor
         selectors paired with text-decoration: none."""
+        # Strip CSS comments first to avoid false matches on braces in comments
+        css = re.sub(r'/\*.*?\*/', '', css, flags=re.DOTALL)
         depth = 0
         i = 0
         selector_start = 0

@@ -136,13 +136,18 @@ class LandmarkExtractor(HTMLParser):
                                "vs 'Footer navigation')"
                     })
 
-        # Check for section/region without label
-        for lm in self.landmarks:
-            if lm["type"] == "region" and not lm["label"]:
+        # Check for section/region without label — only flag when multiple
+        # sections exist (a single unlabeled section is fine; multiple need
+        # labels so screen readers can distinguish them)
+        regions = [lm for lm in self.landmarks if lm["type"] == "region"]
+        if len(regions) > 1:
+            unlabeled = [lm for lm in regions if not lm["label"]]
+            for lm in unlabeled:
                 self.issues.append({
                     "severity": "warning",
-                    "issue": f"<section> without aria-label at line {lm['line']}",
-                    "fix": "Add aria-label or aria-labelledby, or use a different element"
+                    "issue": f"<section> without aria-label at line {lm['line']} "
+                             f"({len(regions)} sections on page)",
+                    "fix": "Add aria-label or aria-labelledby to distinguish sections"
                 })
 
 

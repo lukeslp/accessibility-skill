@@ -119,6 +119,9 @@ def check_pair(fg: str, bg: str, label: str = "") -> dict:
     fg_bright = brightness(fg)
     bg_bright = brightness(bg)
 
+    # Photophobia check: flag backgrounds brighter than ~85% (217/255)
+    photophobia_safe = bg_bright <= 217
+
     return {
         "fg": fg, "bg": bg, "label": label,
         "ratio": round(ratio, 2),
@@ -127,6 +130,7 @@ def check_pair(fg: str, bg: str, label: str = "") -> dict:
         "wcag_aa": ratio >= 4.5,
         "wcag_aaa": ratio >= 7.0,
         "cvi_safe": ratio >= 10.0,
+        "photophobia_safe": photophobia_safe,
     }
 
 
@@ -187,6 +191,7 @@ def main():
             print(f"    WCAG AA  (4.5:1):  {'PASS' if result['wcag_aa'] else 'FAIL'}")
             print(f"    WCAG AAA (7.0:1):  {'PASS' if result['wcag_aaa'] else 'FAIL'}")
             print(f"    CVI Safe (10:1+):  {'PASS' if result['cvi_safe'] else 'FAIL'}")
+            print(f"    Photophobia Safe:  {'PASS' if result['photophobia_safe'] else 'FAIL — bg brightness > 85%'}")
             print()
 
     elif args.check_theme:

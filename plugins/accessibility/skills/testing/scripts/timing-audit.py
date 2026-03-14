@@ -76,7 +76,7 @@ TIMING_PATTERNS = [
         "fix": "Set transition-duration: 0.01ms in prefers-reduced-motion media query.",
     },
     {
-        "pattern": re.compile(r'\.carousel|\.slider|\.slideshow|swiper', re.I),
+        "pattern": re.compile(r'class="[^"]*\b(?:carousel|slider|slideshow|swiper)\b[^"]*"', re.I),
         "severity": "warning",
         "issue": "Carousel/slider pattern detected",
         "fix": "Auto-advancing carousels need: pause button, keyboard controls, "

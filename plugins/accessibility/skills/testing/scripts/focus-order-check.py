@@ -106,7 +106,7 @@ class FocusOrderExtractor(HTMLParser):
                            "Positive tabindex creates unpredictable focus order."
                 })
 
-            # Interactive role without focusability
+            # Interactive role without proper focusability
             if el["role"] in INTERACTIVE_ROLES and el["tag"] not in FOCUSABLE_ELEMENTS:
                 if el["tabindex"] is None:
                     self.issues.append({
@@ -114,6 +114,13 @@ class FocusOrderExtractor(HTMLParser):
                         "element": el["description"],
                         "issue": f"Interactive role '{el['role']}' on non-focusable <{el['tag']}>",
                         "fix": f"Add tabindex='0' or use a native <button>/<a> instead"
+                    })
+                elif el["tabindex"] not in (0, -1):
+                    self.issues.append({
+                        "line": el["line"], "severity": "warning",
+                        "element": el["description"],
+                        "issue": f"Interactive role '{el['role']}' uses tabindex='{el['tabindex']}' instead of 0",
+                        "fix": "Use tabindex='0' for natural DOM order focus"
                     })
 
             # Click handler on non-focusable without tabindex

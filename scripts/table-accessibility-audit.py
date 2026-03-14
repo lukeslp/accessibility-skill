@@ -58,8 +58,16 @@ class TableAuditor(HTMLParser):
         if tag == "th":
             self._current_table["has_th"] = True
             self._current_table["th_count"] += 1
-            if "scope" in attrs_dict:
-                self._current_table["th_with_scope"] += 1
+            scope_val = attrs_dict.get("scope")
+            if scope_val is not None:
+                if scope_val in ("row", "col", "rowgroup", "colgroup"):
+                    self._current_table["th_with_scope"] += 1
+                else:
+                    self.issues.append({
+                        "line": line, "severity": "error",
+                        "issue": f"Invalid scope value: \"{scope_val}\"",
+                        "fix": "Use scope='col', scope='row', scope='colgroup', or scope='rowgroup'."
+                    })
 
     def handle_endtag(self, tag):
         if tag == "table":

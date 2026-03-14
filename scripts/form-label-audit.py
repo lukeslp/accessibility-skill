@@ -100,7 +100,25 @@ class FormLabelAuditor(HTMLParser):
             if inp["aria_labelledby"]:
                 has_name = True
 
-            # 5. Check for title (less preferred but fallback)
+            # 5. Flag placeholder reliance (even if title provides a fallback name)
+            if inp["placeholder"] and not has_name:
+                issues.append({
+                    "line": inp["line"], "severity": "error",
+                    "element": f'<{inp["tag"]} placeholder="{inp["placeholder"][:30]}">',
+                    "issue": "Input lacks a label (placeholder is NOT a label)",
+                    "fix": fix_suggestion
+                })
+                if inp["title"]:
+                    # Title provides a fallback accessible name but is unreliable
+                    has_name = True
+                    issues.append({
+                        "line": inp["line"], "severity": "warning",
+                        "element": f'<{inp["tag"]} id="{inp["id"] or ""}" name="{inp["name"] or ""}">',
+                        "issue": "Input uses 'title' for its accessible name",
+                        "fix": "Use a <label> or 'aria-label' instead; 'title' is not reliably announced."
+                    })
+
+            # 6. Check for title (less preferred but fallback)
             if not has_name and inp["title"]:
                 has_name = True
                 issues.append({
@@ -111,15 +129,7 @@ class FormLabelAuditor(HTMLParser):
                 })
 
             if not has_name:
-                # 6. Check for placeholder (common failure)
-                if inp["placeholder"]:
-                    issues.append({
-                        "line": inp["line"], "severity": "error",
-                        "element": f'<{inp["tag"]} placeholder="{inp["placeholder"][:30]}">',
-                        "issue": "Input lacks a label (placeholder is NOT a label)",
-                        "fix": fix_suggestion
-                    })
-                else:
+                if not inp["placeholder"]:  # placeholder case already handled above
                     issues.append({
                         "line": inp["line"], "severity": "error",
                         "element": f'<{inp["tag"]} id="{inp["id"] or ""}" name="{inp["name"] or ""}">',

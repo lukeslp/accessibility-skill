@@ -97,6 +97,16 @@ class LinkAuditor(HTMLParser):
                 })
                 return
             accessible_name = self._link_img_alt
+            # Check image alt against vague patterns too
+            for pattern in VAGUE_LINK_PATTERNS:
+                if pattern.match(accessible_name):
+                    self.stats["issues"] += 1
+                    self.issues.append({
+                        "line": line, "href": href, "severity": "warning",
+                        "issue": f'Image-only link has vague alt text: "{accessible_name}"',
+                        "fix": "Use descriptive alt text that explains the link destination"
+                    })
+                    return
 
         # Title used as only source of info (check before generic empty-link)
         if not accessible_name and not self._link_has_img and title:

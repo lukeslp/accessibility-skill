@@ -12,6 +12,7 @@ Usage:
 """
 
 import argparse
+import json
 import sys
 
 
@@ -80,6 +81,7 @@ def main():
     )
     parser.add_argument("--fg", help="Foreground (text) color in hex")
     parser.add_argument("--bg", help="Background color in hex")
+    parser.add_argument("--format", choices=["text", "json"], default="text")
 
     args = parser.parse_args()
 
@@ -99,22 +101,28 @@ def main():
 
     results = check_wcag(ratio)
 
-    print(f"\nForeground: {fg}")
-    print(f"Background: {bg}")
-    print(f"Contrast Ratio: {ratio:.2f}:1\n")
+    if args.format == "json":
+        print(json.dumps({
+            "fg": fg, "bg": bg,
+            "ratio": round(ratio, 2),
+            "results": results,
+        }, indent=2))
+    else:
+        def status(passed: bool) -> str:
+            return "PASS" if passed else "FAIL"
 
-    def status(passed: bool) -> str:
-        return "PASS" if passed else "FAIL"
+        print(f"\nForeground: {fg}")
+        print(f"Background: {bg}")
+        print(f"Contrast Ratio: {ratio:.2f}:1\n")
+        print(f"  Normal text (AA  >= 4.5:1):  {status(results['normal_text_aa'])}")
+        print(f"  Normal text (AAA >= 7.0:1):  {status(results['normal_text_aaa'])}")
+        print(f"  Large text  (AA  >= 3.0:1):  {status(results['large_text_aa'])}")
+        print(f"  Large text  (AAA >= 4.5:1):  {status(results['large_text_aaa'])}")
+        print(f"  UI components (AA >= 3.0:1): {status(results['ui_components_aa'])}")
+        print()
 
-    print(f"  Normal text (AA  >= 4.5:1):  {status(results['normal_text_aa'])}")
-    print(f"  Normal text (AAA >= 7.0:1):  {status(results['normal_text_aaa'])}")
-    print(f"  Large text  (AA  >= 3.0:1):  {status(results['large_text_aa'])}")
-    print(f"  Large text  (AAA >= 4.5:1):  {status(results['large_text_aaa'])}")
-    print(f"  UI components (AA >= 3.0:1): {status(results['ui_components_aa'])}")
-    print()
-
-    if not results["normal_text_aa"]:
-        print("Suggestion: Increase contrast by darkening the text or lightening the background.")
+        if not results["normal_text_aa"]:
+            print("Suggestion: Increase contrast by darkening the text or lightening the background.")
 
 
 if __name__ == "__main__":
